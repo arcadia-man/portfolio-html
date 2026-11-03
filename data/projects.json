@@ -1,0 +1,79 @@
+[
+  {
+    "slug": "formula-engine",
+    "title": "Formula Calculation Engine",
+    "summary": "A spreadsheet-style formula engine — tokenizer, parser, AST and evaluator — built from scratch and ported identically to JavaScript, TypeScript and Java, verified by one shared 114-case test suite.",
+    "context": "Personal project",
+    "date": "",
+    "cover": "content/images/cover-formula.svg",
+    "stack": [
+      "JavaScript",
+      "TypeScript",
+      "Java",
+      "Parsing",
+      "ASTs"
+    ],
+    "tags": [
+      "parsing",
+      "java",
+      "typescript"
+    ],
+    "links": {
+      "source": "",
+      "demo": ""
+    },
+    "featured": true,
+    "caseStudy": true
+  },
+  {
+    "slug": "rate-limiter",
+    "title": "Distributed Rate Limiter",
+    "summary": "A token-bucket rate limiter shared across API nodes using Redis and an atomic Lua script, with a local fallback when Redis is unavailable.",
+    "context": "Side project",
+    "date": "2026-07-15",
+    "cover": "content/images/cover-rate-limiter.svg",
+    "stack": [
+      "Java",
+      "Spring Boot",
+      "Redis",
+      "Lua",
+      "Docker"
+    ],
+    "tags": [
+      "system-design",
+      "redis",
+      "java"
+    ],
+    "links": {
+      "source": "https://github.com/your-username/rate-limiter",
+      "demo": "https://example.com/rate-limiter-demo"
+    },
+    "featured": true,
+    "caseStudy": true,
+    "sample": true
+  },
+  {
+    "slug": "cl-connect",
+    "title": "CL Connect",
+    "summary": "A social-gifting proof of concept at CaratLane that lets customers share wishlists so friends and family can gift together.",
+    "context": "CaratLane · Proof of concept",
+    "date": "",
+    "cover": "",
+    "stack": [
+      "React.js",
+      "Node.js"
+    ],
+    "tags": [
+      "react",
+      "node",
+      "poc"
+    ],
+    "links": {
+      "source": "",
+      "demo": ""
+    },
+    "featured": true,
+    "caseStudy": false,
+    "workDoc": "cl-connect"
+  }
+]

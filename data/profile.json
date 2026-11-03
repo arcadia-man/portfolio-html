@@ -1,0 +1,57 @@
+{
+  "name": "Pritam Kumar Maurya",
+  "shortName": "Pritam",
+  "title": "Software Development Engineer",
+  "headline": "I build scalable backend systems and event-driven platforms for e-commerce and logistics — from Kafka microservices and Saga orchestration to AI-driven pricing intelligence.",
+  "location": "Chennai, India",
+  "availability": "Open to interesting problems and conversations.",
+  "email": "pritam123aur@gmail.com",
+  "phone": "+91 98018 75767",
+  "resume": "assets/docs/pritam_resume_sde.pdf",
+  "photo": {
+    "src": "https://lh3.googleusercontent.com/d/1hzQcqvb9LYdKHoh8OobrQfycrrW5DplE",
+    "alt": "Portrait of Pritam Kumar Maurya"
+  },
+  "socials": [
+    {
+      "label": "GitHub",
+      "icon": "github",
+      "url": "https://github.com/your-username",
+      "sample": true
+    },
+    {
+      "label": "LinkedIn",
+      "icon": "linkedin",
+      "url": "https://www.linkedin.com/in/your-username",
+      "sample": true
+    },
+    {
+      "label": "Email",
+      "icon": "mail",
+      "url": "mailto:pritam123aur@gmail.com"
+    }
+  ],
+  "bio": [
+    "I'm a Software Development Engineer with 3+ years of experience in e-commerce and logistics. I build scalable backend systems in **Java** and **Node.js**, design **event-driven microservices** with **Kafka**, and ship full-stack features with **React.js**.",
+    "I've contributed to ERP transformation, system optimisation and business-critical platforms spanning order management, inventory operations and AI-driven pricing intelligence. I care about distributed systems, clean system design, and software that holds up under real production load."
+  ],
+  "metrics": [
+    {
+      "value": "3+",
+      "label": "Years building production systems"
+    },
+    {
+      "value": "50K+",
+      "label": "Notifications per day at peak"
+    },
+    {
+      "value": "99.9%",
+      "label": "Inventory intake accuracy"
+    },
+    {
+      "value": "9.8% → 1.2%",
+      "label": "Manual finance effort, after automation"
+    }
+  ],
+  "whatsapp": "919801875767"
+}

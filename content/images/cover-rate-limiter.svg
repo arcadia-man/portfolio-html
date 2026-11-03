@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" font-family="Inter, system-ui, sans-serif">
+  <defs>
+    <linearGradient id="g" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#0b0b0e"/><stop offset="1" stop-color="#2e2e35"/></linearGradient>
+    <radialGradient id="l" cx=".75" cy=".2" r=".7"><stop offset="0" stop-color="#fff" stop-opacity=".14"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#g)"/><rect width="1200" height="675" fill="url(#l)"/>
+  <g fill="#ffffff">
+    <rect x="200" y="420" width="60" height="80" rx="8" opacity=".25"/><rect x="290" y="360" width="60" height="140" rx="8" opacity=".35"/><rect x="380" y="300" width="60" height="200" rx="8" opacity=".5"/>
+    <rect x="470" y="250" width="60" height="250" rx="8" opacity=".7"/><rect x="560" y="250" width="60" height="250" rx="8" opacity=".85"/><rect x="650" y="250" width="60" height="250" rx="8" opacity=".85"/>
+    <rect x="740" y="250" width="60" height="250" rx="8" opacity=".85"/><rect x="830" y="250" width="60" height="250" rx="8" opacity=".85"/>
+  </g>
+  <line x1="160" y1="250" x2="1040" y2="250" stroke="#fff" stroke-width="3" stroke-dasharray="12 10" opacity=".6"/>
+  <text x="1040" y="232" font-size="22" fill="#fff" text-anchor="end" opacity=".7">limit: 1,000 req/s</text>
+  <text x="160" y="160" font-size="56" font-weight="700" fill="#fff">Token bucket</text>
+</svg>

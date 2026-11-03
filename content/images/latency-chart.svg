@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 460" font-family="Inter, system-ui, sans-serif">
+  <rect width="1000" height="460" fill="#ffffff"/>
+  <text x="40" y="52" font-size="20" font-weight="700" fill="#111116">p95 latency, before vs after (sample data)</text>
+  <g stroke="#e5e5ea"><line x1="120" y1="100" x2="960" y2="100"/><line x1="120" y1="190" x2="960" y2="190"/><line x1="120" y1="280" x2="960" y2="280"/><line x1="120" y1="370" x2="960" y2="370" stroke="#d1d1d8"/></g>
+  <g font-size="13" fill="#6e6e78" text-anchor="end"><text x="108" y="104">900 ms</text><text x="108" y="194">600 ms</text><text x="108" y="284">300 ms</text><text x="108" y="374">0</text></g>
+  <g>
+    <rect x="190" y="130" width="90" height="240" rx="6" fill="#d1d1d8"/><rect x="290" y="300" width="90" height="70" rx="6" fill="#3451d1"/>
+    <rect x="470" y="160" width="90" height="210" rx="6" fill="#d1d1d8"/><rect x="570" y="290" width="90" height="80" rx="6" fill="#3451d1"/>
+    <rect x="750" y="100" width="90" height="270" rx="6" fill="#d1d1d8"/><rect x="850" y="310" width="90" height="60" rx="6" fill="#3451d1"/>
+  </g>
+  <g font-size="14" fill="#111116" text-anchor="middle" font-weight="600"><text x="285" y="400">Order lookup</text><text x="565" y="400">Inventory sync</text><text x="845" y="400">Invoice job</text></g>
+  <g font-size="13"><rect x="640" y="420" width="14" height="14" rx="3" fill="#d1d1d8"/><text x="662" y="432" fill="#52525c">Before</text><rect x="740" y="420" width="14" height="14" rx="3" fill="#3451d1"/><text x="762" y="432" fill="#52525c">After</text></g>
+</svg>

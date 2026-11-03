@@ -1,0 +1,196 @@
+/* ==========================================================================
+   Design tokens — the only place colours, type, spacing and radii are defined.
+   Theme: follows the OS by default; [data-theme] on <html> overrides it.
+   ========================================================================== */
+
+:root {
+  /* Type */
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --fs-2xs: 0.75rem;
+  --fs-xs: 0.8125rem;
+  --fs-sm: 0.875rem;
+  --fs-base: 1rem;
+  --fs-md: 1.0625rem;
+  --fs-lg: clamp(1.125rem, 1.05rem + 0.35vw, 1.3125rem);
+  --fs-xl: clamp(1.375rem, 1.2rem + 0.8vw, 1.75rem);
+  --fs-2xl: clamp(1.75rem, 1.4rem + 1.6vw, 2.5rem);
+  --fs-3xl: clamp(2.25rem, 1.6rem + 3vw, 3.75rem);
+
+  --lh-tight: 1.1;
+  --lh-snug: 1.3;
+  --lh-body: 1.65;
+
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+
+  /* Space (4px base) */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+
+  /* Layout */
+  --container: 1120px;
+  --container-prose: 720px;
+  --gutter: clamp(1rem, 4vw, 2rem);
+  --header-h: 64px;
+  --section-y: clamp(3.5rem, 7vw, 6.5rem);
+
+  /* Shape */
+  --radius-sm: 6px;
+  --radius: 10px;
+  --radius-lg: 16px;
+  --radius-full: 999px;
+
+  /* Motion */
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --dur: 180ms;
+
+  /* Colour — light */
+  color-scheme: light;
+  --bg: #ffffff;
+  --bg-subtle: #f7f7f9;
+  --surface: #ffffff;
+  --surface-2: #f3f3f6;
+  --border: #e5e5ea;
+  --border-strong: #d1d1d8;
+  --text: #111116;
+  --text-muted: #52525c;
+  --text-subtle: #6e6e78;
+  --accent: #3451d1;
+  --accent-hover: #2a43b4;
+  --accent-soft: #eef1fd;
+  --accent-contrast: #ffffff;
+  --success: #15803d;
+  --mark-bg: #fdf0b3;
+  --mark-text: #111116;
+  --header-bg: rgb(255 255 255 / 0.82);
+  --shadow-sm: 0 1px 2px rgb(17 17 22 / 0.05);
+  --shadow: 0 1px 2px rgb(17 17 22 / 0.04), 0 8px 24px -6px rgb(17 17 22 / 0.08);
+  --code-bg: #f5f5f8;
+
+  /* Syntax highlighting + callouts */
+  --syn-keyword: #cf222e;
+  --syn-string: #0a3069;
+  --syn-number: #0550ae;
+  --syn-comment: #6e7781;
+  --syn-title: #8250df;
+  --syn-type: #953800;
+  --syn-attr: #0550ae;
+  --c-important: #8250df;
+  --c-warning: #9a6700;
+  --c-caution: #cf222e;
+
+  /* Soft UI: alpha fills/dividers adapt to any background; elevation replaces outlines */
+  --divider: rgb(17 17 22 / 0.07);
+  --fill: rgb(17 17 22 / 0.045);
+  --fill-hover: rgb(17 17 22 / 0.08);
+  --shadow-soft: 0 0 0 1px rgb(17 17 22 / 0.03), 0 1px 2px rgb(17 17 22 / 0.04), 0 8px 24px -8px rgb(17 17 22 / 0.1);
+  --shadow-lift: 0 0 0 1px rgb(17 17 22 / 0.04), 0 2px 4px rgb(17 17 22 / 0.04), 0 22px 44px -14px rgb(17 17 22 / 0.2);
+
+  /* Home page canvas — monochrome: soft top light + fading grid */
+  --home-bg: #f9f9fa;
+  --glow-a: #ffffff;
+  --glow-b: rgb(17 17 22 / 0.03);
+  --grid-line: rgb(17 17 22 / 0.055);
+}
+
+/* Colour — dark (OS preference, unless the visitor picked light) */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #0b0c0f;
+    --bg-subtle: #111216;
+    --surface: #14151a;
+    --surface-2: #1b1c22;
+    --border: #26272e;
+    --border-strong: #34353d;
+    --text: #ececf1;
+    --text-muted: #a3a3ad;
+    --text-subtle: #8b8b96;
+    --accent: #8ea3ff;
+    --accent-hover: #a9b8ff;
+    --accent-soft: #1b2040;
+    --accent-contrast: #0b0c0f;
+    --success: #4ade80;
+    --mark-bg: #5c4b0f;
+    --mark-text: #fff7d6;
+    --header-bg: rgb(11 12 15 / 0.78);
+    --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.4);
+    --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 12px 28px -8px rgb(0 0 0 / 0.5);
+    --code-bg: #15161b;
+    --syn-keyword: #ff7b72;
+    --syn-string: #a5d6ff;
+    --syn-number: #79c0ff;
+    --syn-comment: #8b949e;
+    --syn-title: #d2a8ff;
+    --syn-type: #ffa657;
+    --syn-attr: #79c0ff;
+    --c-important: #b392f0;
+    --c-warning: #d29922;
+    --c-caution: #f85149;
+    --divider: rgb(255 255 255 / 0.07);
+    --fill: rgb(255 255 255 / 0.06);
+    --fill-hover: rgb(255 255 255 / 0.1);
+    --shadow-soft: 0 0 0 1px rgb(255 255 255 / 0.06), 0 10px 30px -10px rgb(0 0 0 / 0.6);
+    --shadow-lift: 0 0 0 1px rgb(255 255 255 / 0.1), 0 24px 48px -12px rgb(0 0 0 / 0.75);
+    --home-bg: #0b0c0f;
+    --glow-a: rgb(255 255 255 / 0.07);
+    --glow-b: rgb(0 0 0 / 0.35);
+    --grid-line: rgb(255 255 255 / 0.045);
+  }
+}
+
+/* Colour — dark (explicit choice) */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0b0c0f;
+  --bg-subtle: #111216;
+  --surface: #14151a;
+  --surface-2: #1b1c22;
+  --border: #26272e;
+  --border-strong: #34353d;
+  --text: #ececf1;
+  --text-muted: #a3a3ad;
+  --text-subtle: #8b8b96;
+  --accent: #8ea3ff;
+  --accent-hover: #a9b8ff;
+  --accent-soft: #1b2040;
+  --accent-contrast: #0b0c0f;
+  --success: #4ade80;
+  --mark-bg: #5c4b0f;
+  --mark-text: #fff7d6;
+  --header-bg: rgb(11 12 15 / 0.78);
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.4);
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 12px 28px -8px rgb(0 0 0 / 0.5);
+  --code-bg: #15161b;
+  --syn-keyword: #ff7b72;
+  --syn-string: #a5d6ff;
+  --syn-number: #79c0ff;
+  --syn-comment: #8b949e;
+  --syn-title: #d2a8ff;
+  --syn-type: #ffa657;
+  --syn-attr: #79c0ff;
+  --c-important: #b392f0;
+  --c-warning: #d29922;
+  --c-caution: #f85149;
+  --divider: rgb(255 255 255 / 0.07);
+  --fill: rgb(255 255 255 / 0.06);
+  --fill-hover: rgb(255 255 255 / 0.1);
+  --shadow-soft: 0 0 0 1px rgb(255 255 255 / 0.06), 0 10px 30px -10px rgb(0 0 0 / 0.6);
+  --shadow-lift: 0 0 0 1px rgb(255 255 255 / 0.1), 0 24px 48px -12px rgb(0 0 0 / 0.75);
+  --home-bg: #0b0c0f;
+  --glow-a: rgb(255 255 255 / 0.07);
+  --glow-b: rgb(0 0 0 / 0.35);
+  --grid-line: rgb(255 255 255 / 0.045);
+}

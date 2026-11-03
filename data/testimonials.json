@@ -1,0 +1,32 @@
+[
+  {
+    "quote": "Pritam took our most fragile flow — order cancellation across four services — and turned it into something the whole team trusts. He thinks about failure cases before anyone asks, and his write-ups make complex systems easy to follow.",
+    "name": "Ananya Rao",
+    "role": "Engineering Manager",
+    "company": "CaratLane",
+    "relationship": "Managed Pritam",
+    "photo": "",
+    "url": "https://www.linkedin.com/in/your-username/details/recommendations/",
+    "sample": true
+  },
+  {
+    "quote": "The kind of engineer you want on call. He tracked down a duplicate-barcode bug that had survived two years of guesses, explained the root cause clearly, and fixed it without drama.",
+    "name": "Rahul Verma",
+    "role": "Senior Software Engineer",
+    "company": "CaratLane",
+    "relationship": "Worked on the same team",
+    "photo": "",
+    "url": "",
+    "sample": true
+  },
+  {
+    "quote": "Pritam is quick to understand the business problem behind a ticket. The rate-card comparison engine saved our ops team hours every week.",
+    "name": "Meera Iyer",
+    "role": "Product Manager",
+    "company": "Freehand.ai",
+    "relationship": "Worked together",
+    "photo": "",
+    "url": "",
+    "sample": true
+  }
+]
