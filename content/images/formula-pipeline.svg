@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" font-family="Inter, system-ui, sans-serif">
+  <rect width="1200" height="360" fill="#ffffff"/>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#3451d1"/></marker></defs>
+  <text x="40" y="60" font-size="22" font-weight="700" fill="#111116">Formula engine pipeline</text>
+  <text x="40" y="88" font-size="15" fill="#6e6e78">"SUM(price, 10) * qty"  →  value</text>
+  <g font-size="18" font-weight="600" text-anchor="middle">
+    <rect x="40" y="150" width="220" height="110" rx="14" fill="#eef1fd" stroke="#3451d1" stroke-width="2"/>
+    <text x="150" y="200" fill="#111116">Tokenizer</text><text x="150" y="228" font-size="13" font-weight="400" fill="#52525c">string → tokens</text>
+    <rect x="340" y="150" width="220" height="110" rx="14" fill="#eef1fd" stroke="#3451d1" stroke-width="2"/>
+    <text x="450" y="200" fill="#111116">Parser</text><text x="450" y="228" font-size="13" font-weight="400" fill="#52525c">precedence, calls</text>
+    <rect x="640" y="150" width="220" height="110" rx="14" fill="#eef1fd" stroke="#3451d1" stroke-width="2"/>
+    <text x="750" y="200" fill="#111116">AST</text><text x="750" y="228" font-size="13" font-weight="400" fill="#52525c">typed node tree</text>
+    <rect x="940" y="150" width="220" height="110" rx="14" fill="#111116"/>
+    <text x="1050" y="200" fill="#ffffff">Evaluator</text><text x="1050" y="228" font-size="13" font-weight="400" fill="#d4d4da">vars + function registry</text>
+  </g>
+  <g stroke="#3451d1" stroke-width="3" marker-end="url(#a)"><line x1="262" y1="205" x2="334" y2="205"/><line x1="562" y1="205" x2="634" y2="205"/><line x1="862" y1="205" x2="934" y2="205"/></g>
+  <text x="600" y="320" font-size="14" fill="#6e6e78" text-anchor="middle">Same design in JavaScript, TypeScript and Java · one shared 114-case test suite</text>
+</svg>

@@ -1,0 +1,34 @@
+[
+  {
+    "slug": "writing-guide",
+    "title": "Writing guide: every formatting feature this blog supports",
+    "date": "2026-11-01",
+    "excerpt": "A reference post that uses every feature — headings, callouts, code with syntax highlighting, tables, task lists, images with captions and more. Copy from here when writing.",
+    "tags": ["guide", "markdown"],
+    "sample": true
+  },
+  {
+    "slug": "idempotent-kafka-consumers",
+    "title": "Designing idempotent Kafka consumers",
+    "date": "2026-10-20",
+    "excerpt": "At-least-once delivery means duplicates will happen. Here is how to make consumers safe to retry — idempotency keys, upserts and the outbox pattern.",
+    "tags": ["kafka", "java", "system-design"],
+    "sample": true
+  },
+  {
+    "slug": "reading-consumer-lag",
+    "title": "Reading Kafka consumer lag during an incident",
+    "date": "2026-09-12",
+    "excerpt": "A short field guide: what consumer lag actually measures, the three shapes it takes, and what each one tells you about the root cause.",
+    "tags": ["kafka", "debugging", "production"],
+    "sample": true
+  },
+  {
+    "slug": "rate-limiter-design",
+    "title": "System design notes: a distributed rate limiter",
+    "date": "2026-08-03",
+    "excerpt": "Token bucket vs sliding window, where to keep the counters, and how to stay correct across many API nodes with Redis and Lua.",
+    "tags": ["system-design", "redis", "java"],
+    "sample": true
+  }
+]

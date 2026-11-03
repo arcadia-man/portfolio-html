@@ -1,0 +1,278 @@
+[
+  {
+    "group": "Languages",
+    "items": [
+      {
+        "name": "Java",
+        "proof": [
+          {
+            "label": "Distributed rate limiter",
+            "url": "https://github.com/your-username/rate-limiter",
+            "type": "github",
+            "sample": true
+          }
+        ]
+      },
+      {
+        "name": "JavaScript",
+        "match": [
+          "javascript",
+          "js"
+        ],
+        "proof": []
+      },
+      {
+        "name": "TypeScript",
+        "proof": []
+      },
+      {
+        "name": "Python",
+        "proof": []
+      }
+    ]
+  },
+  {
+    "group": "Frameworks",
+    "items": [
+      {
+        "name": "Spring Boot",
+        "proof": [
+          {
+            "label": "Spring Boot microservice template",
+            "url": "https://github.com/your-username/spring-boot-template",
+            "type": "github",
+            "sample": true
+          }
+        ]
+      },
+      {
+        "name": "Spring Framework",
+        "match": [
+          "spring"
+        ],
+        "proof": []
+      },
+      {
+        "name": "Node.js",
+        "match": [
+          "node.js",
+          "node"
+        ],
+        "proof": []
+      },
+      {
+        "name": "Express.js",
+        "match": [
+          "express"
+        ],
+        "proof": []
+      },
+      {
+        "name": "React.js",
+        "match": [
+          "react.js",
+          "react"
+        ],
+        "proof": [
+          {
+            "label": "Picklist dashboard (live demo)",
+            "url": "https://example.com/picklist-demo",
+            "type": "demo",
+            "sample": true
+          }
+        ]
+      },
+      {
+        "name": "GraphQL",
+        "proof": []
+      },
+      {
+        "name": "REST APIs",
+        "match": [
+          "rest",
+          "rest apis"
+        ],
+        "proof": []
+      }
+    ]
+  },
+  {
+    "group": "Databases",
+    "items": [
+      {
+        "name": "MySQL",
+        "proof": []
+      },
+      {
+        "name": "MongoDB",
+        "proof": []
+      },
+      {
+        "name": "Redis",
+        "proof": [
+          {
+            "label": "Rate limiter Lua script",
+            "url": "https://github.com/your-username/rate-limiter",
+            "type": "github",
+            "sample": true
+          }
+        ]
+      },
+      {
+        "name": "Elasticsearch",
+        "proof": []
+      }
+    ]
+  },
+  {
+    "group": "Messaging & Infra",
+    "items": [
+      {
+        "name": "Kafka",
+        "proof": [
+          {
+            "label": "Kafka idempotent consumer demo",
+            "url": "https://github.com/your-username/kafka-idempotent-consumer",
+            "type": "github",
+            "sample": true
+          },
+          {
+            "label": "Talk: Kafka in production (slides)",
+            "url": "https://example.com/kafka-talk",
+            "type": "video",
+            "sample": true
+          }
+        ]
+      },
+      {
+        "name": "Webhooks",
+        "match": [
+          "webhook",
+          "webhooks"
+        ],
+        "proof": []
+      },
+      {
+        "name": "Microservices",
+        "match": [
+          "microservices",
+          "microservice"
+        ],
+        "proof": []
+      }
+    ]
+  },
+  {
+    "group": "Cloud & DevOps",
+    "items": [
+      {
+        "name": "AWS (S3, Lambda, CodePipeline, CloudWatch)",
+        "match": [
+          "aws",
+          "s3",
+          "lambda",
+          "codepipeline",
+          "cloudwatch"
+        ],
+        "proof": [
+          {
+            "label": "AWS Certified Developer – Associate",
+            "url": "https://www.credly.com/",
+            "type": "certificate",
+            "sample": true
+          }
+        ]
+      },
+      {
+        "name": "Docker",
+        "proof": []
+      },
+      {
+        "name": "Git",
+        "proof": []
+      },
+      {
+        "name": "Linux",
+        "proof": []
+      },
+      {
+        "name": "Postman",
+        "proof": []
+      },
+      {
+        "name": "Rundeck",
+        "proof": []
+      }
+    ]
+  },
+  {
+    "group": "Concepts",
+    "items": [
+      {
+        "name": "System Design",
+        "match": [
+          "system design",
+          "system-design",
+          "architected",
+          "re-architected"
+        ],
+        "proof": []
+      },
+      {
+        "name": "Design Patterns",
+        "match": [
+          "design patterns",
+          "saga",
+          "orchestrator"
+        ],
+        "proof": []
+      },
+      {
+        "name": "Event-Driven Architecture",
+        "match": [
+          "event-driven",
+          "kafka"
+        ],
+        "proof": []
+      },
+      {
+        "name": "Saga Pattern",
+        "match": [
+          "saga",
+          "saga-pattern"
+        ],
+        "proof": []
+      },
+      {
+        "name": "Data Structures & Algorithms",
+        "match": [
+          "algorithms",
+          "data structures",
+          "parsing",
+          "ast"
+        ],
+        "proof": [
+          {
+            "label": "LeetCode profile",
+            "url": "https://leetcode.com/your-username",
+            "type": "link",
+            "sample": true
+          }
+        ]
+      },
+      {
+        "name": "Agile",
+        "proof": []
+      },
+      {
+        "name": "AI Tools",
+        "match": [
+          "ai",
+          "ai-powered",
+          "ai-assisted"
+        ],
+        "proof": []
+      }
+    ]
+  }
+]

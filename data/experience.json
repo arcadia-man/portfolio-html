@@ -1,0 +1,143 @@
+[
+  {
+    "company": "Freehand.ai",
+    "url": "",
+    "logo": "",
+    "location": "Chennai, India",
+    "roles": [
+      {
+        "title": "Software Development Engineer",
+        "start": "2026-01",
+        "end": null,
+        "summary": "Building AI-powered pricing and costing intelligence for logistics.",
+        "stack": [],
+        "highlights": [
+          {
+            "slug": "rate-card-comparison-engine",
+            "title": "AI-powered rate card comparison engine",
+            "text": "Developed an **AI-powered rate card comparison engine** that summarises repriced rates, newly added entries and key pricing changes between vendor revisions — reducing manual auditing effort and minimising missed pricing discrepancies.",
+            "tags": ["ai", "pricing", "logistics"],
+            "draft": true
+          },
+          {
+            "slug": "rounding-weight-pricing",
+            "title": "AI-assisted rounding-weight pricing",
+            "text": "Built an **AI-assisted rounding-weight pricing solution** for vendors with highly inconsistent pricing formats, closing a costing gap impacting nearly **half a million** in transaction value for large enterprise customers.",
+            "tags": ["ai", "pricing", "logistics"],
+            "draft": true
+          },
+          {
+            "slug": "costing-platform-rearchitecture",
+            "title": "Re-architecting the costing platform for unit & UOM pricing",
+            "text": "Re-architected the logistics costing platform to support both **unit-based** and **UOM-based** pricing models, redesigning rate-card ingestion, costing and auditing while staying compatible with existing vendor contracts.",
+            "tags": ["system-design", "pricing", "logistics"],
+            "draft": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "company": "CaratLane — A Tata Product",
+    "url": "",
+    "logo": "",
+    "location": "Chennai, India",
+    "roles": [
+      {
+        "title": "Software Development Engineer II",
+        "start": "2025-04",
+        "end": "2026-01",
+        "summary": "ERP transformation through event-driven microservices and Saga orchestration.",
+        "stack": ["Kafka", "Microservices", "Saga pattern", "React.js", "GraphQL", "REST"],
+        "highlights": [
+          {
+            "slug": "erp-event-driven-microservices",
+            "title": "Event-driven microservices for the ERP transformation",
+            "text": "Architected **event-driven microservices** on **Kafka** with retry and DLQ mechanisms for the ERP transformation, building scalable order-cancellation and inventory-recovery modules.",
+            "tags": ["kafka", "microservices", "system-design"],
+            "draft": true
+          },
+          {
+            "slug": "saga-orchestrator",
+            "title": "A reusable Saga orchestrator",
+            "text": "Built a reusable **Saga Orchestrator** for multi-step async workflows with rollback, improving cross-service consistency through robust retry mechanisms.",
+            "tags": ["saga-pattern", "microservices", "system-design"],
+            "draft": true
+          },
+          {
+            "slug": "order-detail-view-revamp",
+            "title": "Revamping the order detail view",
+            "text": "Revamped the **order detail view** using React.js, GraphQL and REST APIs, integrating KYC and seller incentive claims behind a structured release plan.",
+            "tags": ["react", "graphql", "frontend"],
+            "draft": true
+          },
+          {
+            "slug": "finance-ops-automation",
+            "title": "Automating finance operations: 9.8% → 1.2% manual effort",
+            "text": "**Automated finance operations**, reducing manual effort from **9.8% to 1.2%** and improving auto-procurement throughput.",
+            "tags": ["automation", "erp"],
+            "draft": true
+          }
+        ]
+      },
+      {
+        "title": "Software Development Engineer I",
+        "start": "2023-06",
+        "end": "2025-03",
+        "summary": "Notification systems, fulfilment tooling and legacy optimisation.",
+        "stack": ["Kafka", "Ruby on Rails", "Node.js", "React.js", "AWS S3"],
+        "highlights": [
+          {
+            "slug": "notification-service",
+            "title": "A queue-driven notification service at 50K+/day",
+            "text": "Developed a **queue-driven notification service** for non-invoiced orders, orchestrating WhatsApp, SMS and email reminders at a peak of **50,000+ notifications/day**.",
+            "tags": ["queues", "notifications", "backend"],
+            "draft": true
+          },
+          {
+            "slug": "duplicate-barcode-bug",
+            "title": "Fixing a two-year-old duplicate-barcode bug",
+            "text": "Resolved a **2-year-old production bug** of duplicate barcodes per order by tracing it to a lagging Kafka message queue.",
+            "tags": ["kafka", "debugging", "production"],
+            "draft": true
+          },
+          {
+            "slug": "legacy-rails-optimisation",
+            "title": "Optimising 500+ legacy Rails background jobs",
+            "text": "Optimised **500+ legacy Rails background processes**, improving query performance, memory usage and Kafka consumer stability.",
+            "tags": ["rails", "performance", "kafka"],
+            "draft": true
+          },
+          {
+            "slug": "inwarding-procurement-workflows",
+            "title": "Item inwarding & vendor procurement at 99.9% accuracy",
+            "text": "Built **item inwarding and vendor procurement workflows** with **99.9% intake accuracy**, improving inventory operations and ERP data consistency.",
+            "tags": ["erp", "inventory", "backend"],
+            "draft": true
+          },
+          {
+            "slug": "delay-reason-pipeline",
+            "title": "Delay-reason upload pipeline with pre-signed S3 URLs",
+            "text": "Developed a **delay-reason upload pipeline** using pre-signed S3 URLs, triggering downstream delivery updates through Kafka for accurate ETA adjustments.",
+            "tags": ["aws", "kafka", "backend"],
+            "draft": true
+          },
+          {
+            "slug": "picklist-dashboard",
+            "title": "A barcode-verification picklist dashboard",
+            "text": "Built a **React.js picklist dashboard** for barcode verification before invoicing, handling **20% of orders** and improving fulfilment accuracy.",
+            "tags": ["react", "frontend", "fulfilment"],
+            "draft": true
+          },
+          {
+            "slug": "cl-connect",
+            "title": "CL Connect — a social-gifting proof of concept",
+            "text": "Created **CL Connect**, a social-gifting POC for wishlist sharing using React.js and Node.js.",
+            "tags": ["react", "node", "poc"],
+            "draft": true
+          }
+        ]
+      }
+    ]
+  }
+]
