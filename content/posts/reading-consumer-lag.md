@@ -22,7 +22,7 @@ order.created  2          1050002         1050010         8
 2. **Sawtooth** — the consumer keeps up, then falls behind on a schedule. Look for batch jobs, GC pauses or rebalances.
 3. **Steady climb on all partitions** — throughput problem. Add partitions/consumers or make processing cheaper.
 
-![Bar chart of latency before and after a fix](../images/latency-chart.svg "Sample chart — use real Grafana screenshots here")
+![Bar chart of latency before and after a fix](../images/diagrams/latency-chart.svg "Sample chart — use real Grafana screenshots here")
 
 > [!WARNING]
 > Restarting consumers "to clear lag" triggers a rebalance and can make duplicates *more* likely. Find the cause first.

@@ -7,9 +7,9 @@
   "availability": "Open to interesting problems and conversations.",
   "email": "pritam123aur@gmail.com",
   "phone": "+91 98018 75767",
-  "resume": "assets/docs/pritam_resume_sde.pdf",
+  "resume": "content/files/pritam_resume_sde.pdf",
   "photo": {
-    "src": "https://lh3.googleusercontent.com/d/1hzQcqvb9LYdKHoh8OobrQfycrrW5DplE",
+    "src": "content/images/profile.jpg",
     "alt": "Portrait of Pritam Kumar Maurya"
   },
   "socials": [

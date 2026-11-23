@@ -12,7 +12,7 @@ I wanted to properly understand how formula engines work under the hood instead 
 
 The engine is a classic four-stage pipeline:
 
-![Formula engine pipeline: tokenizer, parser, AST, evaluator](../images/formula-pipeline.svg "The four stages, from expression string to value")
+![Formula engine pipeline: tokenizer, parser, AST, evaluator](../images/diagrams/formula-pipeline.svg "The four stages, from expression string to value")
 
 Here is how one expression flows through it:
 

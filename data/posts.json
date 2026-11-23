@@ -1,10 +1,36 @@
 [
   {
+    "slug": "how-content-connects",
+    "title": "How a post, a job and a skill connect",
+    "date": "2026-11-24",
+    "excerpt": "One blog post, one experience bullet and one skill — what to add to which config file, and how the site stitches them together into links, tags, search and skill proof.",
+    "tags": [
+      "architecture",
+      "guide"
+    ],
+    "draft": true
+  },
+  {
+    "slug": "how-this-site-works",
+    "title": "How this site works: a portfolio with no build step",
+    "date": "2026-11-23",
+    "excerpt": "A portfolio and blog in plain HTML, CSS and JavaScript — content in JSON and Markdown, rendered in the browser, with no framework and no build step. Here's how it fits together.",
+    "tags": [
+      "architecture",
+      "javascript",
+      "frontend"
+    ],
+    "draft": true
+  },
+  {
     "slug": "writing-guide",
     "title": "Writing guide: every formatting feature this blog supports",
     "date": "2026-11-01",
-    "excerpt": "A reference post that uses every feature — headings, callouts, code with syntax highlighting, tables, task lists, images with captions and more. Copy from here when writing.",
-    "tags": ["guide", "markdown"],
+    "excerpt": "A reference post that uses every feature — text styles, links, lists, callouts, code with syntax highlighting and diffs, aligned tables, images, embeds, 35 kinds of diagrams and more. Copy from here when writing.",
+    "tags": [
+      "guide",
+      "markdown"
+    ],
     "sample": true
   },
   {
@@ -12,7 +38,11 @@
     "title": "Designing idempotent Kafka consumers",
     "date": "2026-10-20",
     "excerpt": "At-least-once delivery means duplicates will happen. Here is how to make consumers safe to retry — idempotency keys, upserts and the outbox pattern.",
-    "tags": ["kafka", "java", "system-design"],
+    "tags": [
+      "kafka",
+      "java",
+      "system-design"
+    ],
     "sample": true
   },
   {
@@ -20,7 +50,11 @@
     "title": "Reading Kafka consumer lag during an incident",
     "date": "2026-09-12",
     "excerpt": "A short field guide: what consumer lag actually measures, the three shapes it takes, and what each one tells you about the root cause.",
-    "tags": ["kafka", "debugging", "production"],
+    "tags": [
+      "kafka",
+      "debugging",
+      "production"
+    ],
     "sample": true
   },
   {
@@ -28,7 +62,11 @@
     "title": "System design notes: a distributed rate limiter",
     "date": "2026-08-03",
     "excerpt": "Token bucket vs sliding window, where to keep the counters, and how to stay correct across many API nodes with Redis and Lua.",
-    "tags": ["system-design", "redis", "java"],
+    "tags": [
+      "system-design",
+      "redis",
+      "java"
+    ],
     "sample": true
   }
 ]
