@@ -206,7 +206,7 @@ export function renderFatal(error) {
           <h1>Something went wrong loading this page.</h1>
           ${isFile
             ? html`<p>This site loads its content from JSON files, which browsers block on <code>file://</code>.
-                Start a local server in the project folder — <code>python3 -m http.server 8000</code> — then open
+                Start a local server in the project folder — <code>node scripts/serve.mjs</code> — then open
                 <a class="text-link" href="http://localhost:8000">localhost:8000</a>.</p>`
             : html`<p>Please refresh the page. If it keeps happening, the content files may be missing.</p>`}
         </div>

@@ -24,6 +24,9 @@ function syncButton(button) {
   button.title = `Switch to ${next} theme`;
 }
 
+/** Fires `themechange` on document — e.g. Mermaid diagrams re-render with matching colours. */
+const announce = () => document.dispatchEvent(new CustomEvent("themechange", { detail: { theme: currentTheme() } }));
+
 export function initThemeToggle(button) {
   if (!button) return;
   syncButton(button);
@@ -32,6 +35,10 @@ export function initThemeToggle(button) {
     root.dataset.theme = next;
     store(next);
     syncButton(button);
+    announce();
   });
-  media.addEventListener("change", () => syncButton(button));
+  media.addEventListener("change", () => {
+    syncButton(button);
+    announce();
+  });
 }
