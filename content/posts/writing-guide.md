@@ -1,5 +1,5 @@
 > [!NOTE]
-> **Sample post.** A reference for every formatting feature this site supports — open this file next to the rendered page and copy what you need. It's marked `"sample": true` in `data/posts.json`, so it only shows in preview mode.
+> A reference for every formatting feature this site supports. Open `content/posts/writing-guide.md` next to this page and copy what you need — every example below is the real Markdown that produced it.
 
 ## Headings and the table of contents
 

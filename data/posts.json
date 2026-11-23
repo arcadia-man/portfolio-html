@@ -8,7 +8,7 @@
       "architecture",
       "guide"
     ],
-    "draft": true
+    "draft": false
   },
   {
     "slug": "how-this-site-works",
@@ -20,7 +20,7 @@
       "javascript",
       "frontend"
     ],
-    "draft": true
+    "draft": false
   },
   {
     "slug": "writing-guide",
@@ -31,7 +31,7 @@
       "guide",
       "markdown"
     ],
-    "sample": true
+    "draft": false
   },
   {
     "slug": "idempotent-kafka-consumers",
@@ -43,7 +43,7 @@
       "java",
       "system-design"
     ],
-    "sample": true
+    "draft": false
   },
   {
     "slug": "reading-consumer-lag",
@@ -55,7 +55,7 @@
       "debugging",
       "production"
     ],
-    "sample": true
+    "draft": false
   },
   {
     "slug": "rate-limiter-design",
@@ -67,6 +67,6 @@
       "redis",
       "java"
     ],
-    "sample": true
+    "draft": false
   }
 ]
