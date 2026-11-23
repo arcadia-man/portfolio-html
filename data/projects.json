@@ -49,8 +49,7 @@
       "demo": "https://example.com/rate-limiter-demo"
     },
     "featured": true,
-    "caseStudy": true,
-    "sample": true
+    "caseStudy": true
   },
   {
     "slug": "cl-connect",
