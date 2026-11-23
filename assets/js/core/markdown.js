@@ -8,6 +8,7 @@
  *  - ![alt](src "Caption")  → <figure> with a caption; images open full-size on click
  *  - > [!NOTE] / [!TIP] / [!IMPORTANT] / [!WARNING] / [!CAUTION]  → callout boxes
  *  - code blocks get a language label, a copy button and syntax highlighting (core/prose.js)
+ *  - ```mermaid blocks become diagrams (flowchart, sequence, class, state, ER, gantt…) (core/prose.js)
  *  - tables and code scroll horizontally on small screens
  *
  * Raw HTML in Markdown is passed through (content is first-party). Add DOMPurify
@@ -59,6 +60,10 @@ export function renderMarkdown(source, { baseDir = "" } = {}) {
 
     code(code, infostring, escaped) {
       const lang = (infostring || "").match(/^\S*/)?.[0] ?? "";
+      if (lang === "mermaid") {
+        // Rendered to SVG later by core/prose.js → renderDiagrams()
+        return `<div class="diagram" data-mermaid="${encodeURIComponent(code)}" aria-busy="true" aria-label="Diagram"></div>\n`;
+      }
       const body = escaped ? code : esc(code);
       const label = lang && lang !== "text" ? `<span class="code-block__lang">${esc(lang)}</span>` : "";
       return `<div class="code-block">${label}<button class="code-block__copy" type="button" aria-label="Copy code">Copy</button><pre tabindex="0"><code${
@@ -94,7 +99,8 @@ export function renderMarkdown(source, { baseDir = "" } = {}) {
 
     image(href, title, text) {
       if (!href) return esc(text);
-      const img = `<img src="${esc(resolve(href))}" alt="${esc(text)}" loading="lazy" decoding="async">`;
+      // Eager: posts have few images, and loading them up front lets the layout settle before you scroll.
+      const img = `<img src="${esc(resolve(href))}" alt="${esc(text)}" decoding="async">`;
       return title ? `<figure>${img}<figcaption>${esc(title)}</figcaption></figure>` : img;
     },
   };

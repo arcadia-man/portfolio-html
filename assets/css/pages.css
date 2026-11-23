@@ -632,6 +632,8 @@ body[data-page="home"] .post-item:last-child {
 
 .article__layout {
   display: grid;
+  /* minmax(0, 1fr): the column can't be pushed wider than the screen by a wide diagram/table/code block */
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--space-10);
   padding-top: var(--space-10);
 }
@@ -737,6 +739,7 @@ body[data-page="home"] .post-item:last-child {
 .prose {
   min-width: 0;
   max-width: var(--container-prose);
+  overflow-wrap: break-word; /* long URLs/words wrap instead of widening the page on phones */
   color: var(--text-muted);
   font-size: var(--fs-md);
   line-height: 1.75;
@@ -886,8 +889,13 @@ body[data-page="home"] .post-item:last-child {
 .prose td {
   padding: var(--space-3) var(--space-4);
   border-bottom: 1px solid var(--divider);
-  text-align: left;
   vertical-align: top;
+}
+
+/* default left; :--- / :---: / ---: column alignment in Markdown sets align="" */
+.prose th:not([align]),
+.prose td:not([align]) {
+  text-align: left;
 }
 
 .prose th {
@@ -1373,4 +1381,125 @@ body[data-page="home"] .post-item:last-child {
 
 .lightbox__close:hover {
   background: rgb(255 255 255 / 0.28);
+}
+
+/* ---------- Mermaid diagrams ---------- */
+
+.diagram {
+  display: flex;
+  justify-content: center;
+  justify-content: safe center; /* when wider than the box: start at the left edge and scroll, don't clip */
+  max-width: 100%;
+  min-height: 120px;
+  padding: var(--space-6) var(--space-4);
+  overflow-x: auto;
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow-soft);
+}
+
+.diagram svg {
+  height: auto;
+  max-width: 100%;
+}
+
+/* placeholder while a diagram renders: soft shimmer, height reserved in prose.js */
+.diagram[aria-busy="true"] {
+  background: linear-gradient(90deg, var(--surface) 25%, var(--surface-2) 50%, var(--surface) 75%) 0 0 / 200% 100%;
+  animation: shimmer 1.4s linear infinite;
+}
+
+.diagram.is-error {
+  display: block;
+}
+
+.diagram__error {
+  margin-bottom: var(--space-2);
+  color: var(--c-caution);
+  font-size: var(--fs-sm);
+}
+
+.diagram.is-error pre {
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  white-space: pre-wrap;
+}
+
+/* ---------- Prose: more elements ---------- */
+
+.prose h4 {
+  margin-top: 1.6em;
+  font-size: var(--fs-md);
+}
+
+.prose h4 + * {
+  margin-top: 0.5em;
+}
+
+.prose dl {
+  display: grid;
+  gap: var(--space-1) 0;
+}
+
+.prose dt {
+  color: var(--text);
+  font-weight: var(--fw-semibold);
+}
+
+.prose dd {
+  margin: 0 0 var(--space-3) 1.25em;
+}
+
+.prose abbr[title] {
+  text-decoration: underline dotted;
+  cursor: help;
+}
+
+.prose small {
+  font-size: var(--fs-sm);
+}
+
+/* Several images in a row: <div class="image-row"> <img …> <img …> </div> */
+.prose .image-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap: var(--space-4);
+  align-items: start;
+}
+
+.prose .image-row > * {
+  margin: 0;
+}
+
+/* Embeds (YouTube, CodePen, slides…) — responsive 16:9 */
+.prose iframe {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  border: 0;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+}
+
+.prose video {
+  width: 100%;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+}
+
+/* Diff blocks */
+.hljs-addition {
+  display: inline-block;
+  min-width: 100%;
+  background: color-mix(in srgb, var(--success) 14%, transparent);
+  color: var(--text);
+}
+
+.hljs-deletion {
+  display: inline-block;
+  min-width: 100%;
+  background: color-mix(in srgb, var(--c-caution) 14%, transparent);
+  color: var(--text);
 }

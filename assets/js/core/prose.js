@@ -5,8 +5,10 @@
  *   initLightbox()    click an image to view it full-size
  *   initProgress()    reading-progress bar under the header
  *   initShare()       copy link / native share / LinkedIn / X
+ *   renderDiagrams()  ```mermaid blocks → SVG (Mermaid + ZenUML loaded only when needed)
  */
-import { $, $$ } from "./dom.js";
+import { $, $$, esc } from "./dom.js";
+import { currentTheme } from "./theme.js";
 
 /* ---------- Syntax highlighting ---------- */
 
@@ -39,6 +41,8 @@ const GRAMMARS = {
   kt: "kotlin",
   go: "go",
   lua: "lua",
+  diff: "diff",
+  patch: "diff",
 };
 
 export async function highlightCode(root) {
@@ -85,7 +89,8 @@ export function initCodeCopy(root) {
 /* ---------- Image lightbox ---------- */
 
 export function initLightbox(root) {
-  const images = $$("img", root);
+  // Images inside links keep their link behaviour; every other image can be zoomed.
+  const images = $$("img", root).filter((img) => !img.closest("a"));
   if (!images.length) return;
 
   const dialog = document.createElement("dialog");
@@ -100,6 +105,17 @@ export function initLightbox(root) {
     img.tabIndex = 0;
     img.setAttribute("role", "button");
     img.setAttribute("aria-label", `View larger: ${img.alt || "image"}`);
+    if (NEEDS_MANUAL_ANCHORING && !img.complete) {
+      const before = img.getBoundingClientRect().height;
+      img.addEventListener(
+        "load",
+        () => {
+          const rect = img.getBoundingClientRect();
+          if (rect.top < 0) window.scrollBy(0, rect.height - before);
+        },
+        { once: true },
+      );
+    }
     img.addEventListener("error", () => {
       const fallback = document.createElement("div");
       fallback.className = "image-missing";
@@ -189,4 +205,172 @@ export function initShare(root, { title }) {
 
   // Native share sheet exists mostly on phones; hide the button elsewhere.
   if (!navigator.share) $$('[data-share="native"]', root).forEach((b) => (b.hidden = true));
+}
+
+/* ---------- Mermaid diagrams ---------- */
+
+const scripts = new Map();
+
+/** Load a vendored classic script once and resolve with the global it defines. */
+function loadVendor(file, globalName) {
+  if (!scripts.has(file)) {
+    scripts.set(
+      file,
+      new Promise((resolve, reject) => {
+        const script = document.createElement("script");
+        script.src = new URL(`../../vendor/${file}`, import.meta.url).href;
+        script.onload = () => resolve(window[globalName]);
+        script.onerror = () => reject(new Error(`Could not load ${file}`));
+        document.head.append(script);
+      }),
+    );
+  }
+  return scripts.get(file);
+}
+
+let diagramSeq = 0;
+let zenumlReady;
+
+const nextFrame = () => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+/** Let the browser handle scrolling/input between diagram renders. */
+const idle = () =>
+  new Promise((resolve) => (window.requestIdleCallback ? requestIdleCallback(resolve, { timeout: 300 }) : setTimeout(resolve, 16)));
+
+/** Browsers without CSS scroll anchoring (Safari) jump when content above the viewport grows. */
+const NEEDS_MANUAL_ANCHORING = !(window.CSS && CSS.supports("overflow-anchor", "auto"));
+
+/** Run `change()` and, where the browser won't, keep the visible content still if `el` sits above the viewport. */
+export function keepScrollSteady(el, change) {
+  const before = el.getBoundingClientRect();
+  change();
+  if (!NEEDS_MANUAL_ANCHORING || before.top >= 0) return;
+  const delta = el.getBoundingClientRect().height - before.height;
+  if (delta) window.scrollBy(0, delta);
+}
+
+/** Resolve once the tab is visible — hidden pages aren't laid out, so text can't be measured. */
+function whenVisible() {
+  if (document.visibilityState === "visible") return Promise.resolve();
+  return new Promise((resolve) => {
+    const onChange = () => {
+      if (document.visibilityState !== "visible") return;
+      document.removeEventListener("visibilitychange", onChange);
+      resolve();
+    };
+    document.addEventListener("visibilitychange", onChange);
+  });
+}
+
+/**
+ * Render every ```mermaid block inside `root`.
+ * - Mermaid (assets/vendor/mermaid.min.js, ~5.5 MB) starts downloading as soon as a page has a diagram;
+ *   the ZenUML plugin (mermaid-zenuml.min.js, ~3.3 MB) only when a ZenUML diagram is about to render.
+ * - Placeholders reserve an estimated height; diagrams render one at a time in idle time, nearest the
+ *   screen first, until all are done; the page doesn't jump when a diagram above you finishes.
+ * - "svg element not in render tree" / measuring errors are retried after fonts + layout settle.
+ * - Re-renders with matching colours on `themechange`.
+ */
+export async function renderDiagrams(root) {
+  const blocks = $$("[data-mermaid]", root);
+  if (!blocks.length) return;
+  const sourceOf = (el) => decodeURIComponent(el.dataset.mermaid);
+
+  // Reserve roughly the final height so the page doesn't jump when the diagram arrives.
+  for (const el of blocks) {
+    const lines = sourceOf(el).trim().split("\n").length;
+    el.style.minHeight = `${Math.min(560, 160 + lines * 16)}px`;
+  }
+
+  const showSource = (el, message) =>
+    keepScrollSteady(el, () => {
+      el.classList.add("is-error");
+      el.removeAttribute("aria-busy");
+      el.style.minHeight = "";
+      el.innerHTML = `<p class="diagram__error">${esc(message)}</p><pre>${esc(sourceOf(el))}</pre>`;
+    });
+
+  const mermaidReady = loadVendor("mermaid.min.js", "mermaid");
+
+  async function renderOne(el) {
+    const source = sourceOf(el);
+    let mermaid;
+    try {
+      mermaid = await mermaidReady;
+      if (/^\s*zenuml\b/.test(source)) {
+        zenumlReady ??= loadVendor("mermaid-zenuml.min.js", "mermaid-zenuml").then((zen) =>
+          mermaid.registerExternalDiagrams([zen]),
+        );
+        await zenumlReady;
+      }
+    } catch (err) {
+      showSource(el, err.message);
+      return;
+    }
+
+    for (let attempt = 1; ; attempt++) {
+      await whenVisible();
+      await idle();
+      // Monochrome to match the site: "neutral" (greys) in light mode, "dark" in dark mode.
+      mermaid.initialize({
+        startOnLoad: false,
+        securityLevel: "strict",
+        theme: currentTheme() === "dark" ? "dark" : "neutral",
+        fontFamily: getComputedStyle(document.body).fontFamily,
+        // Mermaid 12 defaults to the ELK layout engine, which is several times slower; dagre is the classic, fast one.
+        layout: "dagre",
+      });
+      const id = `diagram-${++diagramSeq}`;
+      try {
+        const { svg } = await mermaid.render(id, source);
+        keepScrollSteady(el, () => {
+          el.classList.remove("is-error");
+          el.removeAttribute("aria-busy");
+          el.style.minHeight = "";
+          el.innerHTML = svg;
+        });
+        el.dataset.rendered = "true";
+        return;
+      } catch (err) {
+        document.getElementById(`d${id}`)?.remove(); // Mermaid leaves a temp node behind on errors
+        const message = String(err?.message ?? err);
+        if (attempt < 3 && /render tree|getBBox|getComputedTextLength/i.test(message)) {
+          await document.fonts?.ready;
+          await nextFrame();
+          await sleep(250 * attempt);
+          continue;
+        }
+        showSource(el, `Diagram error: ${message.split("\n")[0]}`);
+        el.dataset.rendered = "true";
+        return;
+      }
+    }
+  }
+
+  // Render every diagram, one at a time, always picking the one nearest the screen first.
+  // (Waiting for an IntersectionObserver alone misses diagrams skipped by a fast scroll or a TOC jump.)
+  const pending = new Set(blocks);
+  let working = false;
+  const nearScreen = (el) => {
+    const r = el.getBoundingClientRect();
+    return r.bottom > -1200 && r.top < innerHeight + 1200;
+  };
+  const pump = async () => {
+    if (working) return;
+    working = true;
+    while (pending.size) {
+      const queue = [...pending];
+      const next = queue.find(nearScreen) ?? queue[0];
+      pending.delete(next);
+      await renderOne(next);
+    }
+    working = false;
+  };
+  pump();
+
+  // Theme change: redraw what's drawn; anything still pending picks up the new theme anyway.
+  document.addEventListener("themechange", () => {
+    blocks.filter((el) => el.dataset.rendered).forEach((el) => pending.add(el));
+    pump();
+  });
 }

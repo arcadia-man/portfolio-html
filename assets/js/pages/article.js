@@ -11,7 +11,7 @@ import { workDocs, docHref } from "../core/library.js";
 import { mountLayout, renderFatal } from "../core/layout.js";
 import { renderMarkdown, isEmptyMarkdown } from "../core/markdown.js";
 import { formatDate, formatRange, readingTime } from "../core/format.js";
-import { highlightCode, initCodeCopy, initLightbox, initProgress, initShare } from "../core/prose.js";
+import { highlightCode, initCodeCopy, initLightbox, initProgress, initShare, renderDiagrams } from "../core/prose.js";
 import { tagHref, StatusBadge } from "../components/posts.js";
 
 const KINDS = {
@@ -246,6 +246,7 @@ async function main() {
     initProgress(article);
     initShare(article, { title: item.title });
     highlightCode(prose);
+    renderDiagrams(prose);
     initTocSpy();
   }
   if (location.hash) document.getElementById(decodeURIComponent(location.hash.slice(1)))?.scrollIntoView();

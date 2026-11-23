@@ -38,6 +38,9 @@ body {
 
 main {
   flex: 1;
+  /* Content is rendered by JS after load: reserve a screen so the footer starts below
+     the fold instead of jumping down when the page fills in (layout shift). */
+  min-height: 100vh;
 }
 
 img,
@@ -113,14 +116,15 @@ strong {
 
 /* ---------- Layout primitives ---------- */
 
-.container {
+/* :root raises specificity so third-party CSS (ZenUML injects Tailwind's own .container) can't resize the page */
+:root .container {
   width: 100%;
   max-width: calc(var(--container) + var(--gutter) * 2);
   margin-inline: auto;
   padding-inline: var(--gutter);
 }
 
-.container--prose {
+:root .container--prose {
   max-width: calc(var(--container-prose) + var(--gutter) * 2);
 }
 
