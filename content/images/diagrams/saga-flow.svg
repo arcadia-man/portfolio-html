@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" font-family="Inter, system-ui, sans-serif">
+  <rect width="1200" height="520" fill="#ffffff"/>
+  <defs>
+    <marker id="f" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#3451d1"/></marker>
+    <marker id="c" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#cf222e"/></marker>
+  </defs>
+  <text x="40" y="56" font-size="22" font-weight="700" fill="#111116">Saga orchestration (sample diagram)</text>
+  <text x="40" y="84" font-size="15" fill="#6e6e78">Forward steps in blue · compensations in red when a later step fails</text>
+  <rect x="440" y="120" width="320" height="90" rx="14" fill="#111116"/>
+  <text x="600" y="160" font-size="19" font-weight="600" fill="#fff" text-anchor="middle">Saga Orchestrator</text>
+  <text x="600" y="186" font-size="13" fill="#d4d4da" text-anchor="middle">state machine · retries · DLQ</text>
+  <g font-size="17" font-weight="600" text-anchor="middle" fill="#111116">
+    <rect x="80" y="330" width="260" height="90" rx="14" fill="#eef1fd" stroke="#3451d1" stroke-width="2"/><text x="210" y="372">Order service</text>
+    <rect x="470" y="330" width="260" height="90" rx="14" fill="#eef1fd" stroke="#3451d1" stroke-width="2"/><text x="600" y="372">Inventory service</text>
+    <rect x="860" y="330" width="260" height="90" rx="14" fill="#fdecec" stroke="#cf222e" stroke-width="2"/><text x="990" y="372">Payment service</text>
+  </g>
+  <g font-size="13" fill="#52525c" text-anchor="middle"><text x="210" y="398">1 · create order</text><text x="600" y="398">2 · reserve stock</text><text x="990" y="398">3 · charge ✗ failed</text></g>
+  <g stroke="#3451d1" stroke-width="3" fill="none" marker-end="url(#f)"><path d="M480 210 L240 326"/><path d="M590 212 L590 326"/><path d="M720 210 L960 326"/></g>
+  <g stroke="#cf222e" stroke-width="3" stroke-dasharray="8 6" fill="none" marker-end="url(#c)"><path d="M860 400 C 800 470, 720 470, 700 424"/><path d="M470 400 C 410 470, 330 470, 310 424"/></g>
+  <g font-size="13" fill="#cf222e" text-anchor="middle"><text x="790" y="490">release stock</text><text x="400" y="490">cancel order</text></g>
+</svg>

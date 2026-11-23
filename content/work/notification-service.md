@@ -7,7 +7,7 @@ Orders that weren't invoiced on time needed reminders to stores and customers ac
 
 ## Architecture
 
-![Notification service architecture](../images/notification-architecture.svg "Scheduler → Kafka → idempotent workers → channel providers, with a DLQ")
+![Notification service architecture](../images/diagrams/notification-architecture.svg "Scheduler → Kafka → idempotent workers → channel providers, with a DLQ")
 
 - A **scheduler** finds non-invoiced orders and publishes one event per reminder.
 - A **Kafka topic** partitioned by order ID keeps reminders for an order in sequence.

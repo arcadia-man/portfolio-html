@@ -5,7 +5,7 @@
     "summary": "A spreadsheet-style formula engine — tokenizer, parser, AST and evaluator — built from scratch and ported identically to JavaScript, TypeScript and Java, verified by one shared 114-case test suite.",
     "context": "Personal project",
     "date": "",
-    "cover": "content/images/cover-formula.svg",
+    "cover": "content/images/covers/formula-engine.svg",
     "stack": [
       "JavaScript",
       "TypeScript",
@@ -31,7 +31,7 @@
     "summary": "A token-bucket rate limiter shared across API nodes using Redis and an atomic Lua script, with a local fallback when Redis is unavailable.",
     "context": "Side project",
     "date": "2026-07-15",
-    "cover": "content/images/cover-rate-limiter.svg",
+    "cover": "content/images/covers/rate-limiter.svg",
     "stack": [
       "Java",
       "Spring Boot",

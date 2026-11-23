@@ -5,7 +5,7 @@
 
 A rate limiter that enforces **N requests per second per API key** across every node of a horizontally scaled API, adding under 2 ms of latency per request.
 
-![Token bucket illustration](../images/cover-rate-limiter.svg "Token bucket: bursts are allowed up to the bucket size, then traffic is held to the refill rate")
+![Token bucket illustration](../images/covers/rate-limiter.svg "Token bucket: bursts are allowed up to the bucket size, then traffic is held to the refill rate")
 
 ## Problem
 

@@ -17,7 +17,7 @@ Every team was hand-rolling multi-step flows with ad-hoc retries. When step 3 of
 
 A reusable **Saga orchestrator**: a flow is declared as a list of steps, and each step has a forward action and a compensating action.
 
-![Saga orchestration diagram](../images/saga-flow.svg "Forward steps and compensations when payment fails (sample diagram)")
+![Saga orchestration diagram](../images/diagrams/saga-flow.svg "Forward steps and compensations when payment fails (sample diagram)")
 
 ```java
 Saga<CancelOrder> cancelOrder = Saga.<CancelOrder>named("cancel-order")
@@ -27,6 +27,23 @@ Saga<CancelOrder> cancelOrder = Saga.<CancelOrder>named("cancel-order")
     .retry(Retry.exponential(3, Duration.ofSeconds(2)))
     .onExhausted(DeadLetter.to("saga.cancel-order.dlq"))
     .build();
+```
+
+The same flow as a sequence diagram (written in Markdown with Mermaid):
+
+```mermaid
+sequenceDiagram
+    participant S as Saga orchestrator
+    participant O as Orders
+    participant I as Inventory
+    participant P as Payments
+    S->>O: mark cancelled
+    S->>I: release stock
+    S->>P: refund
+    P--xS: timeout
+    S->>P: retry ×3 (backoff)
+    P--xS: still failing
+    S->>S: park in DLQ, alert
 ```
 
 Key decisions:
